@@ -3,8 +3,12 @@ const { parse } = require('url')
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
-const hostname = process.env.RAILWAY_STATIC_URL ? '0.0.0.0' : 'localhost'
+const hostname = process.env.RAILWAY_ENVIRONMENT_NAME ? '0.0.0.0' : 'localhost'
 const port = process.env.PORT || 3000
+
+console.log(`Starting server in ${dev ? 'development' : 'production'} mode`)
+console.log(`Hostname: ${hostname}, Port: ${port}`)
+console.log(`Railway env: ${process.env.RAILWAY_ENVIRONMENT_NAME || 'not detected'}`)
 
 const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
