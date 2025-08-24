@@ -4,6 +4,10 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
+  // Railway-specific server configuration
+  experimental: {
+    serverComponentsExternalPackages: []
+  },
   async headers() {
     const isDev = process.env.NODE_ENV === 'development';
     
